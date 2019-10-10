@@ -6,7 +6,6 @@ public class Subject {
 
 	private Integer subjectID;
 	private String subjectName;
-	private List studentList;
 
 	public Integer getSubjectID() {
 		return subjectID;
@@ -22,14 +21,6 @@ public class Subject {
 
 	public void setSubjectName(String subjectName) {
 		this.subjectName = subjectName;
-	}
-
-	public List getStudentList() {
-		return studentList;
-	}
-
-	public void setStudentList(List studentList) {
-		this.studentList = studentList;
 	}
 
 	@Override

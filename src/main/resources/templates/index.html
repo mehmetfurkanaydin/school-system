@@ -35,7 +35,11 @@
 				<td>{{student.studentID}}</td>
 				<td>{{student.firstName}}</td>
 				<td>{{student.lastName}}</td>
-				<td></td>
+				<td>
+					<ul class="list-group">
+						<li class="list-group-item py-2" ng-repeat="subject in student.subjects">{{subject.subjectName}}</li>
+					</ul>
+				</td>
 			</tr>
 		</table>
 

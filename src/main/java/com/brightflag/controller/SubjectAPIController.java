@@ -19,7 +19,6 @@ public class SubjectAPIController {
 
 	@RequestMapping("api/getSubjectsOfStudent/{studentId}")
 	public List<Subject> getSubjectsOfStudent(@PathVariable String studentId) {
-		// TODO populate students subjects list
 		Student student = new Student();
 		student.setStudentID(Integer.parseInt(studentId));
 		return subjectService.getSubjectsOfStudent(student);

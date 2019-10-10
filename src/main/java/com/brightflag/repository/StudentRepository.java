@@ -31,7 +31,7 @@ public class StudentRepository implements IStudentDAO {
 			student= this.jdbcTemplate.queryForObject(QUERY_FIND_STUDENT_BY_ID,
 							new BeanPropertyRowMapper<Student>(Student.class), id);
 
-		}catch(DataAccessException de){
+		} catch(DataAccessException de){
 			System.err.println(de.getMessage());
 		}
 		return student;

@@ -28,6 +28,13 @@ create table exam (
    examName varchar(255),
    studentID integer not null references student(studentID),
    subjectID integer not null references subject(subjectID),
-   grade varchar(3),
-   primary key(studentID, studentID, subjectID)
+   primary key(examID)
+);
+
+create table grade (
+   gradeID integer auto_increment not null,
+   examID integer not null references exam(examID),
+   studentID integer not null references student(studentID),
+   grade varchar(3) not null,
+   primary key(examID, studentID)
 );

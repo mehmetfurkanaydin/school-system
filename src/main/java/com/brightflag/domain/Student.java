@@ -1,6 +1,8 @@
 package com.brightflag.domain;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Student {
 
@@ -8,10 +10,27 @@ public class Student {
 	private String firstName;
 	private String lastName;
 	private List<Subject> subjects;
+	private List<Grade> grades;
 
-	public Integer getStudentID() {
-		return studentID;
+	public List<Exam> getExams() {
+		return exams;
 	}
+
+	public void setExams(List<Exam> exams) {
+		this.exams = exams;
+	}
+
+	private List<Exam> exams;
+
+	public List<Grade> getGrades() {
+		return grades;
+	}
+
+	public void setGrades(List<Grade> grades) {
+		this.grades = grades;
+	}
+
+	public Integer getStudentID() { return studentID; }
 
 	public void setStudentID(Integer studentID) {
 		this.studentID = studentID;
@@ -33,11 +52,11 @@ public class Student {
 		this.lastName = lastName;
 	}
 
-	public List<Subject> getProjects() {
+	public List<Subject> getSubjects() {
 		return subjects;
 	}
 
-	public void setProjects(List<Subject> subjects) {
+	public void setSubjects(List<Subject> subjects) {
 		this.subjects = subjects;
 	}
 
