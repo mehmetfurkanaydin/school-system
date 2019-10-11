@@ -9,9 +9,9 @@ import java.util.Map;
 
 public interface IExamDAO {
     public String QUERY_GET_ALL_EXAMS="SELECT examID,examName,studentID,subjectID FROM exam";
-    public String QUERY_ADD_NEW_EXAM="INSERT INTO exam(examID, examName, studentID, subjectID) VALUES (?,?,?,?)";
+    public String QUERY_ADD_NEW_EXAM="INSERT INTO exam(examName, studentID, subjectID) VALUES (?,?,?)";
     public String QUERY_FIND_EXAM_BY_ID="SELECT examID, examName, studentID, subjectID FROM exam WHERE examID=?";
-
+    public String QUERY_ADD_NEW_GRADE="INSERT INTO grade(examID, studentID, grade) VALUES (?,?,?)";
     public String QUERY_GET_GRADES_OF_STUDENT="SELECT g.gradeID, g.examID, e.examName, g.studentID, g.grade\n" +
             "FROM exam AS e\n" +
             "INNER JOIN grade AS g\n" +
@@ -24,4 +24,5 @@ public interface IExamDAO {
     public List<Exam> getExamsOfStudent(Student std);
     public Exam findExamByID(int id);
     public boolean createNewExam(Exam exam);
+    public boolean createGrade(Grade grade);
 }

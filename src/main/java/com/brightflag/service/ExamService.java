@@ -21,4 +21,8 @@ public class ExamService {
     public List<Grade> getGradesOfStudent(Student std) {
         return examRepository.getGradesOfStudent(std);
     }
+
+    public boolean createNewExam(Exam exam) { return examRepository.createNewExam(exam); }
+
+    public boolean createNewGrade(Grade grade) { return examRepository.createGrade(grade); }
 }

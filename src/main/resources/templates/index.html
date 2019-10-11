@@ -40,6 +40,13 @@
 						<li class="list-group-item py-2" ng-repeat="subject in student.subjects">{{subject.subjectName}}</li>
 					</ul>
 				</td>
+				<td>
+					<select class="custom-select" ng-model="student.assignSubject.id" ng-options="subject.subjectID as subject.subjectName for subject in student.availableSubjects">
+					</select>
+				</td>
+				<td>
+					<button type="button" ng-click="assignSubject(student)" ng-disabled="!student.assignSubject.id" class="btn btn-secondary">Assign</button>
+				</td>
 			</tr>
 		</table>
 

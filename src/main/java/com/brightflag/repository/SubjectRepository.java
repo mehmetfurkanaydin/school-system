@@ -19,6 +19,12 @@ public class SubjectRepository implements ISubjectDAO {
     JdbcTemplate jdbcTemplate;
 
     @Override
+    public List<Subject> findAllSubjects() {
+        return this.jdbcTemplate.query(QUERY_GET_ALL_SUBJECTS,
+                new BeanPropertyRowMapper<Subject>(Subject.class));
+    }
+
+    @Override
     public List<Subject> getSubjectsOfStudent(Student std) {
         List<Subject> subjectList=
                 this.jdbcTemplate.query(QUERY_GET_SUBJECTS_OF_STUDENT,
@@ -31,6 +37,14 @@ public class SubjectRepository implements ISubjectDAO {
     public boolean createNewSubj(Subject subj) {
         int added= jdbcTemplate.update(QUERY_CREATE_NEW_SUBJECT,
                 subj.getSubjectName());
+
+        return (added == 1);
+    }
+
+    @Override
+    public boolean assignSubjectToStudent(int studentId, int subjectId) {
+        int added= jdbcTemplate.update(QUERY_CREATE_NEW_SUBJECT_STUDENT,
+                studentId, subjectId);
 
         return (added == 1);
     }

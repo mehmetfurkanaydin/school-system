@@ -24,5 +24,10 @@ public class SubjectAPIController {
 		return subjectService.getSubjectsOfStudent(student);
 	}
 
+	@RequestMapping("api/getSubjects")
+	public List<Subject> getAllSubjects() {
+		return subjectService.getAllSubjects();
+	}
+
 
 }

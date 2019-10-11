@@ -18,4 +18,9 @@ public class SubjectService {
         return subjectRepository.getSubjectsOfStudent(std);
     }
 
+    public List<Subject> getAllSubjects() {
+        return subjectRepository.findAllSubjects();
+    }
+
+    public boolean assignSubjectToStudent(int studentID, int subjectID) { return subjectRepository.assignSubjectToStudent(studentID, subjectID); }
 }

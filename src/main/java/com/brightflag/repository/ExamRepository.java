@@ -64,4 +64,12 @@ public class ExamRepository implements IExamDAO {
 
 		return (added == 1);
 	}
+
+	@Override
+	public boolean createGrade(Grade grade) {
+		int added= jdbcTemplate.update(QUERY_ADD_NEW_GRADE,
+				grade.getExamID(), grade.getStudentID(), grade.getGrade());
+
+		return (added == 1);
+	}
 }
