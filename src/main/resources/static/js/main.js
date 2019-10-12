@@ -4,16 +4,16 @@ app.controller('studentCtrl', function($scope, $location, $http) {
 	console.log("StudentCtrl loaded.");
 
 	$scope.assignSubject = function (student) {
-      $http.post('http://localhost:8080/api/assignSubject?studentId=' + student.studentID + "&subjectId=" + student.assignSubject.id)
+      $http.post('http://localhost:8080/api/assignSubject?studentId=' + student.studentID + '&subjectId=' + student.assignSubject.id)
       	.then(response => {
       	    if (response.data) {
-      	       fetchFunction();
+      	       $scope.fetchFunction();
       	    }
       	})
 	}
 
 
-	const fetchFunction = function () {
+	$scope.fetchFunction = function () {
         $http.get('http://localhost:8080/api/getStudents')
         .then(response => {
             $scope.students = response.data;
@@ -33,5 +33,5 @@ app.controller('studentCtrl', function($scope, $location, $http) {
             })
         })
 	}
-	fetchFunction();
+	$scope.fetchFunction();
 });
