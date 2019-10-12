@@ -6,6 +6,8 @@ import java.util.List;
 import com.brightflag.service.ExamService;
 import com.brightflag.service.SubjectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.brightflag.domain.Student;
 import com.brightflag.service.StudentService;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 public class StudentAPIController {
@@ -40,12 +43,15 @@ public class StudentAPIController {
 	}
 
 	@RequestMapping("api/getStudent/{studentId}")
-	public Student getStudent(@PathVariable String studentId) {
+	public ResponseEntity<?> getStudent(@PathVariable String studentId) {
 		Student student = studentService.getStudent(Integer.parseInt(studentId));
+		if (student.getStudentID() == null) {
+			return new ResponseEntity(null, HttpStatus.NOT_FOUND);
+		}
 		student.setSubjects(subjectService.getSubjectsOfStudent(student));
 		student.setGrades(examService.getGradesOfStudent(student));
 		student.setExams(examService.getExamsOfStudent(student));
-		return student;
+		return new ResponseEntity(student, HttpStatus.OK);
 	}
 
 	@RequestMapping("api/assignSubject")
